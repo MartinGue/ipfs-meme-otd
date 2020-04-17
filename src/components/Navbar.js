@@ -7,7 +7,7 @@ class Navbar extends Component {
    
   return(
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a className="navbar-brand" href="/#">Meme van de dag</a>   
+    <a className="navbar-brand" href="https://github.com/MartinG2020/ipfs-meme-otd">Decentralized Image getter-setter on Ipfs</a>   
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">         
           <a 
@@ -16,7 +16,9 @@ class Navbar extends Component {
           target="_blank"
           rel="noopener noreferrer"
           >
-          {this.props.account}
+         Uw Huidige Ethereum Adres:
+          &nbsp;
+         {this.props.account}
          
           </a>             
         </li>

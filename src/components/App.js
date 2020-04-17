@@ -10,8 +10,7 @@ import Navbar from './Navbar'
 import {connect} from 'react-redux' 
 // create ipfs access
 const ipfsClient = require('ipfs-http-client')
-const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' }) // leaving out the arguments will default to these values
-
+const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
 class App extends Component {
 
@@ -29,7 +28,7 @@ class App extends Component {
       window.web3 = new Web3(window.web3.currentProvider)
     }
     else {
-      window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
+      window.alert('Niet-Ethereum browser gedetecteerd. Probeer MetaMask!')
     }
   }
 
@@ -45,15 +44,15 @@ class App extends Component {
       const memeHash = await contract.methods.get().call()
       this.setState({ memeHash })
     } else {
-      window.alert('Smart contract not deployed to detected network.')
+      window.alert('Smart contract werkt niet op dit netwerk,kies een ander netwerk in MetaMask.')
     }
   }
 
   constructor(props) {
     super(props)
-// react state objects
+      // react state objects
     this.state = {
-      // here you create a state component memHash
+      // here you create a state component memeHash
       memeHash: '',
       contract: null,
       web3: null,
@@ -81,7 +80,7 @@ class App extends Component {
   onSubmit = (event) => {
     event.preventDefault()
     console.log("Submitting file to ipfs...")
-    // from the documentation we can add state-file-buffer to ipfs which
+    // from the documentation: we can add state-file-buffer to ipfs which
     // is created from captureFile function 
 
     //cllback function retruns error and result
@@ -102,27 +101,22 @@ class App extends Component {
     return (
       <div>
        <Navbar/>
-
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
-              <h2>Meme Van De Dag</h2> 
-               
-                  <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} alt=""/>
-                              
-                <p>&nbsp;</p>
+              <h2>Meme Van De Dag</h2>                
+                  <img src={`https://ipfs.infura.io/ipfs/${this.state.memeHash}`} alt=""/>              
                 <h2>Verander de Meme</h2>
-                <form onSubmit={this.onSubmit}>  
+              <form onSubmit={this.onSubmit}>  
                 <label class="custom-file-upload"> 
-                <div class="upload-wrap">
-                <button type="button" class="nice-button" >Kies de nieuwe meme</button>           
+                 <div class="upload-wrap">
+                  <button type="button" class="nice-button" >Kies de nieuwe meme</button>           
                   <input type='file' class='upload-btn' onChange={this.captureFile} />
-                  </div>
+                 </div>
                   <input type='submit' value='Verstuur en bevestig de metamask transaction' />
-                  </label>
-
-                </form>                
+                </label>
+              </form>                
               </div>
             </main>
 
