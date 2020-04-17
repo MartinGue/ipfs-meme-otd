@@ -1,0 +1,11 @@
+.upload-wrap {
+    position: relative;
+}
+
+.upload-btn {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}/* Styles go here */
+
+
